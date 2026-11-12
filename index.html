@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confluence: OpenSim, Viewer and Voice</title>
+<meta name="description" content="Confluence is a complete, self-hosted virtual world platform: an OpenSimulator fork with a built-in web portal and economy, a modern Rust viewer, and Windows-native spatial WebRTC voice.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+    <nav class="main" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="opensim.html">OpenSim</a>
+      <a href="viewer.html">Viewer</a>
+      <a href="voice.html">Voice</a>
+      <a href="https://github.com/Ramius1701">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <img class="logo" src="assets/logo.svg" alt="Confluence logo">
+      <h1>Where the streams <span class="grad">meet</span></h1>
+      <p class="lead">Confluence is a complete virtual world platform you run yourself: a grid server, a viewer and a voice service, built to work together and to feel like Second Life while staying OpenSimulator.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">Explore the projects</a>
+        <a class="btn" href="https://github.com/Ramius1701/Confluence-Viewer/releases/latest">Download the viewer</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Three projects, one platform</span>
+      <h2>Everything a grid needs</h2>
+      <p class="section-intro">Each project lives in its own repository and can be used on its own. Together they give a grid owner the server, the client and the voice, with nothing to rent from anyone else.</p>
+
+      <div class="grid three">
+        <article class="card product accent-purple">
+          <span class="tag">Server</span>
+          <h3>Confluence-OpenSim</h3>
+          <p>An independent OpenSimulator fork with the grid portal, economy, search and moderation built in, not bolted on.</p>
+          <ul>
+            <li>Native Web &amp; Admin UI, Store and Marketplace</li>
+            <li>YEngine or Phlox scripting (LSL, OSSL, SLua)</li>
+            <li>ubODE, BulletSim or Jolt physics, per region</li>
+            <li>Moderation, abuse reports and display names</li>
+          </ul>
+          <a class="more" href="opensim.html">More about the server &rarr;</a>
+        </article>
+
+        <article class="card product accent-teal">
+          <span class="tag">Client</span>
+          <h3>Confluence Viewer</h3>
+          <p>A modern viewer written in Rust with a Vulkan renderer, set up for OpenSim grids and the Confluence platform.</p>
+          <ul>
+            <li>Multi-threaded loading and fast teleports</li>
+            <li>About half the video memory for the same textures</li>
+            <li>A clean modern UI, with legacy toggles</li>
+            <li>Multi-avatar login</li>
+          </ul>
+          <a class="more" href="viewer.html">More about the viewer &rarr;</a>
+        </article>
+
+        <article class="card product accent-indigo">
+          <span class="tag">Voice</span>
+          <h3>Confluence-Voice</h3>
+          <p>Spatial WebRTC voice for any OpenSim grid, as a single Windows program. No Vivox, no Linux, no Docker.</p>
+          <ul>
+            <li>One <code>.exe</code> and one <code>.toml</code> file</li>
+            <li>Positional audio mixed for each listener</li>
+            <li>Works with Firestorm 7.1.10+ out of the box</li>
+            <li>Free and self-hosted, no per-user pricing</li>
+          </ul>
+          <a class="more" href="voice.html">More about voice &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">How it fits together</span>
+      <h2>One path from viewer to voice</h2>
+      <p class="section-intro">The viewer logs in to the grid. Each region hands voice requests on to the voice service, which answers the viewer directly with positional audio.</p>
+      <div class="flow">
+        <div class="node"><strong>Confluence Viewer</strong><span>or Firestorm, or any SL-compatible viewer</span></div>
+        <div class="arrow"><b>&rarr;</b>login, world,<br>voice requests</div>
+        <div class="node"><strong>Confluence-OpenSim</strong><span>Robust, regions, web portal, economy</span></div>
+        <div class="arrow"><b>&rarr;</b>JSON-RPC<br>over TLS</div>
+        <div class="node"><strong>Confluence-Voice</strong><span>spatial mixing, UDP media back to viewers</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Why Confluence</span>
+      <h2>Built on a few firm ideas</h2>
+      <div class="grid two" style="margin-top:28px">
+        <div class="card">
+          <h3>As close to Second Life as possible</h3>
+          <p>Residents won't move to a grid that lacks what they expect. Behaviour is worked out from the best evidence available: Linden Lab's open-source SLua, what real viewers send and expect, and the Second Life wiki.</p>
+        </div>
+        <div class="card">
+          <h3>Still OpenSimulator</h3>
+          <p>Open grids, Hypergrid, OSSL and grid-owner control stay. Official OpenSimulator remains the baseline, and its continuing work keeps being merged in.</p>
+        </div>
+        <div class="card">
+          <h3>Self-hosted, end to end</h3>
+          <p>The web portal, economy, search and voice are part of the platform. A grid owner doesn't have to find, pay for and assemble separate services.</p>
+        </div>
+        <div class="card">
+          <h3>Optional by design</h3>
+          <p>Anything that can reasonably be switched off can be. Grid owners choose what runs through their own configuration, and nothing is silently enabled.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Running live</span>
+      <h2>Proven on a real grid</h2>
+      <p class="section-intro">Confluence is developed against <strong>Casperia</strong>, a live grid with real residents, regions and content. Features are checked there with real viewers, not just a clean build.</p>
+      <div class="grid four">
+        <div class="card stat"><div class="num grad">15</div><div class="label">regions on WebRTC voice only</div></div>
+        <div class="card stat"><div class="num grad">3</div><div class="label">physics engines, chosen per region</div></div>
+        <div class="card stat"><div class="num grad">2</div><div class="label">script engines: YEngine and Phlox</div></div>
+        <div class="card stat"><div class="num grad">0</div><div class="label">outside services required</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+        <p>A self-hosted virtual world platform: server, viewer and voice.</p>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="opensim.html">Confluence-OpenSim</a></li>
+          <li><a href="viewer.html">Confluence Viewer</a></li>
+          <li><a href="voice.html">Confluence-Voice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Source</h4>
+        <ul>
+          <li><a href="https://github.com/Ramius1701/Confluence-OpenSim">OpenSim on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Viewer">Viewer on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Voice">Voice on GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Confluence is not made or supported by Linden Lab, the OpenSimulator project or the Aurora Viewer team. Second Life is a trademark of Linden Research, Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>

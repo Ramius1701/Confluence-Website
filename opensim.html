@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confluence-OpenSim</title>
+<meta name="description" content="Confluence-OpenSim: an independent OpenSimulator fork with a native web portal, economy, search, moderation, two script engines and three physics engines.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+    <nav class="main" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="opensim.html" aria-current="page">OpenSim</a>
+      <a href="viewer.html">Viewer</a>
+      <a href="voice.html">Voice</a>
+      <a href="https://github.com/Ramius1701">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">The server</span>
+      <h1>Confluence-<span class="grad">OpenSim</span></h1>
+      <p class="lead">An independent OpenSimulator fork, in the same vein as WhiteCore-Dev or Tranquillity: its own web and admin platform, native economy and search, and a full moderation stack, built into the server instead of left to add-ons.</p>
+      <div class="buttons">
+        <a class="btn primary" href="https://github.com/Ramius1701/Confluence-OpenSim">View on GitHub</a>
+        <a class="btn" href="https://github.com/Ramius1701/Confluence-OpenSim/blob/merge-experiment/FEATURES.md">Full feature list</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>What's built in</h2>
+      <p class="section-intro">Confluence took the bet other forks deferred: build the portal, the economy and the search layer straight into the server, so a grid owner starts with everything they need.</p>
+      <div class="grid three">
+        <div class="card">
+          <h3>Web &amp; Admin UI</h3>
+          <p>A grid portal hosted by Robust itself. Sign-up with starting-region and starter-look pickers, a home page with popular regions, events and classifieds, support tickets, a suggestion box, and an admin console. One login: your avatar name and in-world password.</p>
+        </div>
+        <div class="card">
+          <h3>Economy, Store &amp; Marketplace</h3>
+          <p>A native in-world economy with MoneyServer, a Store for regions and services, and a viewer-integrated DirectDelivery Marketplace.</p>
+        </div>
+        <div class="card">
+          <h3>Search &amp; grid services</h3>
+          <p>Built-in search for places, people, events, groups and classifieds, plus a grid status feed viewers can show in their Grid Status window.</p>
+        </div>
+        <div class="card">
+          <h3>Moderation &amp; identity</h3>
+          <p>Access control, abuse reports and display names, with one master account per email that can own and switch between several avatars.</p>
+        </div>
+        <div class="card">
+          <h3>Scripting</h3>
+          <p>Expanded LSL and OSSL: Combat2, EEP environment scripting, pathfinding, Experience Tools, a bot and NPC framework. Run on <strong>YEngine</strong> (default) or <strong>Phlox</strong>, which adds SLua and keeps scripts' running state.</p>
+        </div>
+        <div class="card">
+          <h3>Physics &amp; world</h3>
+          <p>Choose <strong>ubODE</strong>, <strong>BulletSim</strong> or <strong>Jolt</strong> per region. Weather, map tiles, a region greeter, InWorldz/Halcyon archive loading and region-stability work.</p>
+        </div>
+        <div class="card">
+          <h3>Voice ready</h3>
+          <p>The os-webrtc-janus voice modules are in the tree, ready to point at <a href="voice.html">Confluence-Voice</a>, with a hand-off for grids that still mix in Vivox regions.</p>
+        </div>
+        <div class="card">
+          <h3>Database</h3>
+          <p>Full Unicode and emoji in every user-written text field on MySQL, with PostgreSQL and SQLite supported for grid and standalone setups.</p>
+        </div>
+        <div class="card">
+          <h3>Hardened control plane</h3>
+          <p>Security hardening for the services that run a grid, documented in its own guide alongside the build, setup and testing guides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Project status</h2>
+      <p class="section-intro">"Compiled" and "tested" are different claims, and the project keeps them apart. The project log records what has been verified live, piece by piece.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Area</th><th>Status</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td>Windows build</td><td><span class="pill ok">Clean</span></td><td>Full solution, 0 warnings, 0 errors, including Jolt and Phlox</td></tr>
+            <tr><td>Jolt physics tests</td><td><span class="pill ok">Passing</span></td><td>2,099 passed, 0 failed</td></tr>
+            <tr><td>Phlox and core tests</td><td><span class="pill ok">Passing</span></td><td>5,561 tests, with 2 skipped and 1 timing-sensitive test that passes on its own</td></tr>
+            <tr><td>Web &amp; Admin UI</td><td><span class="pill ok">Live-verified</span></td><td>Against a running Robust: real sessions, admin actions, database writes</td></tr>
+            <tr><td>In-world</td><td><span class="pill ok">Live-verified</span></td><td>With Firestorm: login, region crossing, weather, a full land purchase, and spatial voice between two people in different countries</td></tr>
+            <tr><td>Individual LSL/OSSL functions</td><td><span class="pill wip">Partial</span></td><td>Region stability doesn't mean every function has been exercised in-world</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2>Standing on many shoulders</h2>
+          <p class="section-intro" style="margin-bottom:16px">Official OpenSimulator is the baseline, and its work keeps being merged in. Confluence began from OpenSim Continuum and has ported, by hand where it had to, the best of the wider ecosystem. Each port was checked against a real build first.</p>
+          <p class="section-intro">Grid owners can run it standalone or as a Robust grid, on Windows or elsewhere, and turn on only what they want through their own <code>.ini</code> files.</p>
+        </div>
+        <div class="card">
+          <h3>Ported from</h3>
+          <ul>
+            <li><a href="https://github.com/OpenSim-NGC/OpenSim-Tranquillity">Tranquillity</a>, with Legion's Jolt and Phlox work</li>
+            <li><a href="https://github.com/GuntharDeNiro/opensim">Gunthar's OpenSim fork</a></li>
+            <li><a href="https://github.com/homeworldz/server">Homeworldz</a></li>
+            <li><a href="https://github.com/Mobius-Team/Mobius">Mobius</a></li>
+            <li><a href="https://github.com/WhiteCoreSim/WhiteCore-Dev">WhiteCore-Dev</a>, the model for the web portal</li>
+            <li><a href="https://github.com/HalcyonGrid/halcyon">Halcyon/InWorldz</a>, where Phlox began</li>
+            <li>opensim-lickx, source of MoneyServer and search</li>
+          </ul>
+          <p style="margin-top:14px">Distributed under OpenSimulator's BSD-style licence. Imported parts keep their own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+        <p>A self-hosted virtual world platform: server, viewer and voice.</p>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="opensim.html">Confluence-OpenSim</a></li>
+          <li><a href="viewer.html">Confluence Viewer</a></li>
+          <li><a href="voice.html">Confluence-Voice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Source</h4>
+        <ul>
+          <li><a href="https://github.com/Ramius1701/Confluence-OpenSim">OpenSim on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Viewer">Viewer on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Voice">Voice on GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Confluence is not made or supported by Linden Lab, the OpenSimulator project or the Aurora Viewer team. Second Life is a trademark of Linden Research, Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>

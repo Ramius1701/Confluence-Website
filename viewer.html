@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confluence Viewer</title>
+<meta name="description" content="Confluence Viewer: a modern Rust viewer with a Vulkan renderer, set up for OpenSim grids. A modified version of Aurora Viewer.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+    <nav class="main" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="opensim.html">OpenSim</a>
+      <a href="viewer.html" aria-current="page">Viewer</a>
+      <a href="voice.html">Voice</a>
+      <a href="https://github.com/Ramius1701">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">The client</span>
+      <h1>Confluence <span class="grad">Viewer</span></h1>
+      <p class="lead">A modern viewer written in Rust, with a Vulkan renderer and a clean interface, set up for OpenSim grids and the Confluence platform.</p>
+      <div class="buttons">
+        <a class="btn primary" href="https://github.com/Ramius1701/Confluence-Viewer/releases/latest">Download for Windows</a>
+        <a class="btn" href="https://github.com/Ramius1701/Confluence-Viewer/blob/main/docs/LINUX.md">Linux</a>
+        <a class="btn" href="https://github.com/Ramius1701/Confluence-Viewer/blob/main/docs/MACOS.md">macOS (experimental)</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <figure>
+        <img class="shot" src="assets/world.webp" alt="The viewer in a Japanese garden, with the People, Controls, Places, Inventory, Performance and Conversations windows open" width="1920" height="1032">
+      </figure>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Built for today's hardware</h2>
+      <div class="grid four" style="margin-top:28px">
+        <div class="card stat"><div class="num grad">Multi-core</div><div class="label">work shared across your processor while the graphics card draws</div></div>
+        <div class="card stat"><div class="num grad">&asymp; &frac12;</div><div class="label">the video memory for the same textures</div></div>
+        <div class="card stat"><div class="num grad">Instant</div><div class="label">teleports within a region, with no loading screen</div></div>
+        <div class="card stat"><div class="num grad">Vulkan</div><div class="label">a renderer built for current graphics cards</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>The world you know, a fresh interface</h2>
+      <p class="section-intro">It follows the established viewer's behaviour (same protocol, same rules, same defaults) while rethinking how the windows look and work.</p>
+      <div class="grid three">
+        <div class="card"><h3>Conversations</h3><p>Chats like a messenger: bubbles, pictures, and teleport offers or gifts right in the thread.</p></div>
+        <div class="card"><h3>Notification center</h3><p>Unrolls from the bell, with the history of everything you missed.</p></div>
+        <div class="card"><h3>Inventory explorer</h3><p>Widens into folders, details and filters, with each item's rights at a glance.</p></div>
+        <div class="card"><h3>Places</h3><p>Favourites, landmarks and history in one list, with a preview of each place.</p></div>
+        <div class="card"><h3>One search</h3><p>Residents, places, events, groups and classifieds, with details beside the results.</p></div>
+        <div class="card"><h3>Resource monitor</h3><p>Shows where every millisecond, megabyte and kilobit goes.</p></div>
+        <div class="card"><h3>Legacy toggles</h3><p>Prefer the old layout for a window? Switch any redesigned window back to the legacy UI.</p></div>
+        <div class="card"><h3>Creator tools</h3><p>Building and land tools, photo tools, auto hover height and plenty of quality-of-life touches.</p></div>
+        <div class="card"><h3>Grid status</h3><p>Shows the grid's status feed and flags new entries, so residents know when something is up.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="split">
+        <figure>
+          <img class="shot" src="assets/login.webp" alt="The login screen with two avatar accounts side by side and the news" width="1920" height="1032" loading="lazy">
+          <figcaption>Log in with several avatars, side by side.</figcaption>
+        </figure>
+        <div>
+          <h2>Where it comes from</h2>
+          <p class="section-intro" style="margin-bottom:16px">Confluence Viewer is a modified version of <a href="https://github.com/Aurora-Viewer/Aurora-Viewer">Aurora Viewer</a>, kept in step with Aurora's work and adjusted for OpenSim grids and the Confluence project. It is not made or supported by the Aurora Viewer team.</p>
+          <p class="section-intro" style="margin-bottom:16px">Aurora is a new codebase, not a fork: many of its parts are Rust ports of code from the Second Life viewer, credited file by file.</p>
+          <div class="note"><strong>Early development (0.x).</strong> Usable for exploring, chatting and testing. Some features still await live-grid validation.</div>
+          <p style="margin-top:16px;color:var(--muted)">Licensed under the GNU GPL v3.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+        <p>A self-hosted virtual world platform: server, viewer and voice.</p>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="opensim.html">Confluence-OpenSim</a></li>
+          <li><a href="viewer.html">Confluence Viewer</a></li>
+          <li><a href="voice.html">Confluence-Voice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Source</h4>
+        <ul>
+          <li><a href="https://github.com/Ramius1701/Confluence-OpenSim">OpenSim on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Viewer">Viewer on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Voice">Voice on GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Confluence is not made or supported by Linden Lab, the OpenSimulator project or the Aurora Viewer team. Second Life is a trademark of Linden Research, Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>

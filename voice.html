@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confluence-Voice</title>
+<meta name="description" content="Confluence-Voice: spatial WebRTC voice for any OpenSimulator grid, as a single Windows program. Free and self-hosted, no Vivox, Linux or Docker.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+    <nav class="main" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="opensim.html">OpenSim</a>
+      <a href="viewer.html">Viewer</a>
+      <a href="voice.html" aria-current="page">Voice</a>
+      <a href="https://github.com/Ramius1701">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">The voice</span>
+      <h1>Confluence-<span class="grad">Voice</span></h1>
+      <p class="lead">Spatial WebRTC voice for any OpenSimulator grid. One Windows program, one config file, and residents hear each other where they stand. No Vivox, no Linux VM, no Docker.</p>
+      <div class="buttons">
+        <a class="btn primary" href="https://github.com/Ramius1701/Confluence-Voice">View on GitHub</a>
+        <a class="btn" href="#quick-start">Quick start</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Why it exists</h2>
+      <p class="section-intro">Vivox has stopped taking new sign-ups for its free OpenSim voice service and has announced its end. Grids need a replacement they control before it stops. The existing WebRTC backend is built for Linux, with Docker or WSL for everyone else. Confluence-Voice gives Windows grid operators a native option.</p>
+      <div class="grid three">
+        <div class="card"><h3>Free and self-hosted</h3><p>It costs only your own hardware and bandwidth: no account, no per-user pricing, and no outside service in the voice path.</p></div>
+        <div class="card"><h3>Windows-native</h3><p>A single <code>confluence-voice.exe</code> configured by one <code>.toml</code> file beside it. Download, edit one file, run.</p></div>
+        <div class="card"><h3>Any OpenSim grid</h3><p>Works with any OpenSimulator that has the os-webrtc-janus add-on, which upstream OpenSim includes. Not tied to Confluence-OpenSim.</p></div>
+        <div class="card"><h3>Truly spatial</h3><p>A separate mix for each listener, so voices pan and fade with distance the way residents expect.</p></div>
+        <div class="card"><h3>Viewer-ready</h3><p>Firestorm 7.1.10 and later work with no setup. Browser viewers can use the included reference client.</p></div>
+        <div class="card"><h3>Secure by default</h3><p>TLS is required, the region port takes an IP allow-list, and a TURN relay can be offered as a last resort for viewers behind strict networks.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>How a call flows</h2>
+      <p class="section-intro">The os-webrtc-janus add-on handles the region side. Confluence-Voice is what you point it at instead of a Janus gateway.</p>
+      <div class="flow">
+        <div class="node"><strong>Viewer</strong><span>Firestorm 7.1.10+ or a browser viewer</span></div>
+        <div class="arrow"><b>&rarr;</b>voice caps<br>(LLSD)</div>
+        <div class="node"><strong>OpenSim region</strong><span>with os-webrtc-janus (required)</span></div>
+        <div class="arrow"><b>&rarr;</b>JSON-RPC<br>over TLS</div>
+        <div class="node"><strong>Confluence-Voice</strong><span>answers the offer, mixes audio, sends UDP media to viewers</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quick-start" class="alt">
+    <div class="wrap">
+      <div class="split" style="align-items:start">
+        <div>
+          <h2>Quick start</h2>
+          <p class="section-intro" style="margin-bottom:16px">Run the exe once. It writes <code>confluence-voice.toml</code> beside itself and exits. Set at least your public IP, then run it again.</p>
+          <pre><code>public_ip = "203.0.113.10"
+rpc_bind = "0.0.0.0:9443"
+media_port_lo = 40000
+media_port_hi = 40999
+max_sessions = 900
+tls_cert = "tls\\fullchain.pem"
+tls_key = "tls\\privkey.pem"</code></pre>
+        </div>
+        <div class="card">
+          <h3>What you need</h3>
+          <ul>
+            <li>Windows, with a public IP and a DNS name pointing at it</li>
+            <li>A TLS certificate (required, not optional)</li>
+            <li>UDP 40000&ndash;40999 open, which also caps concurrent sessions</li>
+            <li>TCP 9443 reachable from your region hosts only</li>
+            <li>The os-webrtc-janus add-on in your regions</li>
+          </ul>
+          <p style="margin-top:14px">Full steps, including starting it automatically, are in the <a href="https://github.com/Ramius1701/Confluence-Voice#quick-start">README</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Status</h2>
+      <p class="section-intro">Released as 0.1.2. A release claims only what has been tested and ticked off in the project's testing checklist.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Area</th><th>Status</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td>Spatial voice</td><td><span class="pill ok">Confirmed</span></td><td>With real viewers and real people in different countries (New Zealand and Indiana, USA)</td></tr>
+            <tr><td>Live grid</td><td><span class="pill ok">In use</span></td><td>Casperia moved all 15 regions from Vivox to WebRTC-only in a single pass</td></tr>
+            <tr><td>TURN relay</td><td><span class="pill ok">Done</span></td><td>Offered to viewers as a relay of last resort</td></tr>
+            <tr><td>Group and person-to-person calls</td><td><span class="pill wip">Testing</span></td><td>Next on the checklist</td></tr>
+            <tr><td>Shared secret on the region port</td><td><span class="pill info">Planned</span></td><td>Needs a matching change on the region side first</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note" style="margin-top:24px"><strong>Best on a WebRTC-only grid.</strong> A grid that mixes WebRTC with Vivox regions works, but Firestorm can stop its Vivox client after visiting a WebRTC region. Confluence-OpenSim carries a region-side fix for that; running WebRTC everywhere avoids it entirely.</div>
+      <p style="margin-top:24px;color:var(--muted)">Confluence-Voice is derived from <a href="https://github.com/wolfsoftwaresystemsltd/wolfvoice">wolfvoice</a> by Wolf Software Systems Ltd, which donated its protocol handling, spatial mixer and session logic. Licensed under Apache 2.0.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
+        <p>A self-hosted virtual world platform: server, viewer and voice.</p>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="opensim.html">Confluence-OpenSim</a></li>
+          <li><a href="viewer.html">Confluence Viewer</a></li>
+          <li><a href="voice.html">Confluence-Voice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Source</h4>
+        <ul>
+          <li><a href="https://github.com/Ramius1701/Confluence-OpenSim">OpenSim on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Viewer">Viewer on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Voice">Voice on GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Confluence is not made or supported by Linden Lab, the OpenSimulator project or the Aurora Viewer team. Second Life is a trademark of Linden Research, Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>
