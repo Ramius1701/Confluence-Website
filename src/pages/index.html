@@ -1,37 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Confluence: OpenSim, Viewer and Voice</title>
-<meta name="description" content="Confluence is a complete, self-hosted virtual world platform: an OpenSimulator fork with a built-in web portal and economy, a modern Rust viewer, and Windows-native spatial WebRTC voice.">
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
-    <nav class="main" aria-label="Main">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="opensim.html">OpenSim</a>
-      <a href="viewer.html">Viewer</a>
-      <a href="voice.html">Voice</a>
-      <a href="https://github.com/Ramius1701">GitHub</a>
-    </nav>
-  </div>
-</header>
-
-<main>
+<!--
+title: Confluence: OpenSim, Viewer and Voice
+description: Confluence is a complete, self-hosted virtual world platform: an OpenSimulator fork with a built-in web portal and economy, a modern Rust viewer, and Windows-native spatial WebRTC voice.
+nav: home
+-->
   <section class="hero">
     <div class="wrap">
       <img class="logo" src="assets/logo.svg" alt="Confluence logo">
       <h1>Where the streams <span class="grad">meet</span></h1>
       <p class="lead">Confluence is a complete virtual world platform you run yourself: a grid server, a viewer and a voice service, built to work together and to feel like Second Life while staying OpenSimulator.</p>
       <div class="buttons">
-        <a class="btn primary" href="#projects">Explore the projects</a>
-        <a class="btn" href="https://github.com/Ramius1701/Confluence-Viewer/releases/latest">Download the viewer</a>
+        <a class="btn primary" href="get-started.html">Get started</a>
+        <a class="btn" href="#projects">Explore the projects</a>
+        <a class="btn" href="docs/index.html">Read the docs</a>
       </div>
     </div>
   </section>
@@ -127,46 +107,14 @@
 
   <section>
     <div class="wrap">
-      <span class="eyebrow">Running live</span>
-      <h2>Proven on a real grid</h2>
-      <p class="section-intro">Confluence is developed against <strong>Casperia</strong>, a live grid with real residents, regions and content. Features are checked there with real viewers, not just a clean build.</p>
+      <span class="eyebrow">Tested, not just compiled</span>
+      <h2>Checked with real viewers</h2>
+      <p class="section-intro">A clean build is only the first claim. Confluence is checked with real viewers on a running grid: logins, region crossings, purchases and voice between people in different countries. Each project records what has been verified live and what hasn't. The testing happens on Casperia, a live grid that runs Confluence.</p>
       <div class="grid four">
-        <div class="card stat"><div class="num grad">15</div><div class="label">regions on WebRTC voice only</div></div>
+        <div class="card stat"><div class="num grad">7,660</div><div class="label">automated tests across Jolt, Phlox and the core</div></div>
         <div class="card stat"><div class="num grad">3</div><div class="label">physics engines, chosen per region</div></div>
         <div class="card stat"><div class="num grad">2</div><div class="label">script engines: YEngine and Phlox</div></div>
         <div class="card stat"><div class="num grad">0</div><div class="label">outside services required</div></div>
       </div>
     </div>
   </section>
-</main>
-
-<footer class="site">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
-        <p>A self-hosted virtual world platform: server, viewer and voice.</p>
-      </div>
-      <div>
-        <h4>Projects</h4>
-        <ul>
-          <li><a href="opensim.html">Confluence-OpenSim</a></li>
-          <li><a href="viewer.html">Confluence Viewer</a></li>
-          <li><a href="voice.html">Confluence-Voice</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Source</h4>
-        <ul>
-          <li><a href="https://github.com/Ramius1701/Confluence-OpenSim">OpenSim on GitHub</a></li>
-          <li><a href="https://github.com/Ramius1701/Confluence-Viewer">Viewer on GitHub</a></li>
-          <li><a href="https://github.com/Ramius1701/Confluence-Voice">Voice on GitHub</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="fine">Confluence is not made or supported by Linden Lab, the OpenSimulator project or the Aurora Viewer team. Second Life is a trademark of Linden Research, Inc.</p>
-  </div>
-</footer>
-
-</body>
-</html>

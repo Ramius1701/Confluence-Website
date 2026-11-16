@@ -1,0 +1,141 @@
+<!--
+title: Get started · Confluence
+description: Start with Confluence: run your own grid with Confluence-OpenSim, use Confluence Viewer on any OpenSim grid, or run Confluence-Voice for your regions.
+nav: get-started
+-->
+  <section class="hero hero-small">
+    <div class="wrap">
+      <span class="eyebrow">Get started</span>
+      <h1>Where do you <span class="grad">start?</span></h1>
+      <p class="lead">Confluence is three projects that each stand on their own. Pick the one you came for. Each path ends at the full guide.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="grid three">
+        <a class="card path-card accent-purple" href="#grid-owners">
+          <span class="tag">Run a grid</span>
+          <h3>Grid owners</h3>
+          <p>Build Confluence-OpenSim and run your own world, standalone or as a full grid.</p>
+        </a>
+        <a class="card path-card accent-teal" href="#viewer">
+          <span class="tag">Explore</span>
+          <h3>Viewer users</h3>
+          <p>Install Confluence Viewer and log in to any OpenSim grid, or Second Life.</p>
+        </a>
+        <a class="card path-card accent-indigo" href="#voice">
+          <span class="tag">Add voice</span>
+          <h3>Voice operators</h3>
+          <p>Give any OpenSim grid spatial voice with one Windows program.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="grid-owners" class="alt path-section">
+    <div class="wrap">
+      <span class="eyebrow">Confluence-OpenSim</span>
+      <h2>Run your own grid</h2>
+      <p class="section-intro">Every step of the setup guide is checked from a fresh clone on all six database-and-mode combinations, using only the example config files in the repository.</p>
+      <ol class="steps">
+        <li>
+          <h3>Check the requirements</h3>
+          <p>The .NET 10 SDK and git. SQLite needs nothing else; for MySQL, MariaDB or PostgreSQL you need a running database server.</p>
+          <p><a href="{{root}}docs/opensim/setup.html#1-requirements">Requirements</a></p>
+        </li>
+        <li>
+          <h3>Build it</h3>
+          <p>Clone the repository, run <code>runprebuild.bat</code> (or <code>./runprebuild.sh</code>), then build the solution. Jolt and Phlox are built too, and stay off until you turn them on.</p>
+          <pre><code>git clone https://github.com/Ramius1701/Confluence-OpenSim.git
+cd Confluence-OpenSim
+runprebuild.bat
+dotnet build OpenSim.sln --configuration Release</code></pre>
+          <p><a href="{{root}}docs/opensim/setup.html#2-build">Build steps</a> · <a href="{{root}}docs/opensim/building.html">Linux and macOS</a></p>
+        </li>
+        <li>
+          <h3>Choose a database and a mode</h3>
+          <p>Standalone runs everything in one <code>OpenSim.exe</code>. Grid mode runs <code>Robust.exe</code> plus one or more region servers. Nothing is enabled for you: you copy each <code>*.ini.example</code> and edit it.</p>
+          <p><a href="{{root}}docs/opensim/setup.html#3-choose-a-database">Databases</a> · <a href="{{root}}docs/opensim/setup.html">Full setup guide</a></p>
+        </li>
+        <li>
+          <h3>Harden it before it goes public</h3>
+          <p>Lock down the services that run the grid before you open it to the internet.</p>
+          <p><a href="{{root}}docs/opensim/hardening.html">Security hardening</a></p>
+        </li>
+        <li>
+          <h3>Turn on what you want</h3>
+          <p>The web portal, economy and search are built in. Add the Phlox script engine, Jolt physics, the Marketplace or Experiences as your grid needs them.</p>
+          <p><a href="{{root}}docs/opensim/phlox-setup.html">Phlox</a> · <a href="{{root}}docs/opensim/jolt-physics.html">Jolt</a> · <a href="{{root}}docs/opensim/marketplace.html">Marketplace</a> · <a href="{{root}}docs/opensim/experiences.html">Experiences</a> · <a href="{{root}}docs/opensim/features.html">All features</a></p>
+        </li>
+        <li>
+          <h3>Add voice</h3>
+          <p>The region side of WebRTC voice is already in the tree. Point it at a voice service.</p>
+          <p><a href="#voice">Set up Confluence-Voice</a></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="viewer" class="path-section">
+    <div class="wrap">
+      <span class="eyebrow">Confluence Viewer</span>
+      <h2>Use the viewer</h2>
+      <p class="section-intro">The viewer works on any OpenSim grid, not just ones running Confluence, and on Second Life.</p>
+      <ol class="steps">
+        <li>
+          <h3>Download it</h3>
+          <p>Windows builds are on the releases page. Linux works; macOS is experimental.</p>
+          <p><a href="https://github.com/Ramius1701/Confluence-Viewer/releases/latest">Latest release</a> · <a href="{{root}}docs/viewer/linux.html">Linux</a> · <a href="{{root}}docs/viewer/macos.html">macOS</a></p>
+        </li>
+        <li>
+          <h3>Add your grid</h3>
+          <p>Open the grid manager and add your grid with the login address it gives its residents. Hypergrid links and teleports to other grids work too.</p>
+        </li>
+        <li>
+          <h3>Log in</h3>
+          <p>Each saved account shows as a card with its grid and last location. Several avatars, on several grids, can sit side by side.</p>
+        </li>
+        <li>
+          <h3>Keep it current</h3>
+          <p>On Windows the viewer checks for new versions in the background and offers them at login.</p>
+          <p><a href="{{root}}docs/viewer/updates.html">How updates work</a> · <a href="{{root}}viewer.html">What the viewer can do</a></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="voice" class="alt path-section">
+    <div class="wrap">
+      <span class="eyebrow">Confluence-Voice</span>
+      <h2>Run voice for your grid</h2>
+      <p class="section-intro">Confluence-Voice works with any OpenSimulator that has the os-webrtc-janus add-on, which upstream OpenSim and Confluence-OpenSim both include.</p>
+      <ol class="steps">
+        <li>
+          <h3>Check what you need</h3>
+          <p>A Windows machine with a public IP and a DNS name, a TLS certificate, UDP ports 40000&ndash;40999 open, and TCP 9443 reachable from your region hosts only.</p>
+          <p><a href="{{root}}docs/voice/guide.html#what-you-need">Requirements</a></p>
+        </li>
+        <li>
+          <h3>Get the program</h3>
+          <p>Download a release or build it yourself, and put <code>confluence-voice.exe</code> in a folder of its own.</p>
+          <p><a href="https://github.com/Ramius1701/Confluence-Voice/releases">Releases</a> · <a href="{{root}}docs/voice/guide.html#building-from-source">Building from source</a></p>
+        </li>
+        <li>
+          <h3>Configure it</h3>
+          <p>Run it once to create <code>confluence-voice.toml</code>, set your public IP and certificate, then open the firewall.</p>
+          <p><a href="{{root}}docs/voice/guide.html#2-configure-it">Configuration</a> · <a href="{{root}}docs/voice/guide.html#3-open-the-firewall">Firewall</a></p>
+        </li>
+        <li>
+          <h3>Point your regions at it</h3>
+          <p>Three things must be true in each region before a viewer will use WebRTC voice. Miss one and the result is silence.</p>
+          <p><a href="{{root}}docs/voice/opensim.html">Configuring OpenSimulator</a></p>
+        </li>
+        <li>
+          <h3>Check it works</h3>
+          <p>Firestorm 7.1.10 and newer need no setup. If voice is silent, the troubleshooting guide walks through why.</p>
+          <p><a href="{{root}}docs/voice/guide.html#5-check-it">Checking it</a> · <a href="{{root}}docs/voice/testing.html">Troubleshooting</a></p>
+        </li>
+      </ol>
+    </div>
+  </section>

@@ -1,29 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Confluence-Voice</title>
-<meta name="description" content="Confluence-Voice: spatial WebRTC voice for any OpenSimulator grid, as a single Windows program. Free and self-hosted, no Vivox, Linux or Docker.">
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
-    <nav class="main" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="opensim.html">OpenSim</a>
-      <a href="viewer.html">Viewer</a>
-      <a href="voice.html" aria-current="page">Voice</a>
-      <a href="https://github.com/Ramius1701">GitHub</a>
-    </nav>
-  </div>
-</header>
-
-<main>
+<!--
+title: Confluence-Voice
+description: Confluence-Voice: spatial WebRTC voice for any OpenSimulator grid, as a single Windows program. Free and self-hosted, no Vivox, Linux or Docker.
+nav: voice
+-->
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow">The voice</span>
@@ -103,7 +82,7 @@ tls_key = "tls\\privkey.pem"</code></pre>
           <thead><tr><th>Area</th><th>Status</th><th>Detail</th></tr></thead>
           <tbody>
             <tr><td>Spatial voice</td><td><span class="pill ok">Confirmed</span></td><td>With real viewers and real people in different countries (New Zealand and Indiana, USA)</td></tr>
-            <tr><td>Live grid</td><td><span class="pill ok">In use</span></td><td>Casperia moved all 15 regions from Vivox to WebRTC-only in a single pass</td></tr>
+            <tr><td>Whole-grid use</td><td><span class="pill ok">In use</span></td><td>Running a live grid's regions on WebRTC only, with Vivox fully replaced</td></tr>
             <tr><td>TURN relay</td><td><span class="pill ok">Done</span></td><td>Offered to viewers as a relay of last resort</td></tr>
             <tr><td>Group and person-to-person calls</td><td><span class="pill wip">Testing</span></td><td>Next on the checklist</td></tr>
             <tr><td>Shared secret on the region port</td><td><span class="pill info">Planned</span></td><td>Needs a matching change on the region side first</td></tr>
@@ -114,35 +93,3 @@ tls_key = "tls\\privkey.pem"</code></pre>
       <p style="margin-top:24px;color:var(--muted)">Confluence-Voice is derived from <a href="https://github.com/wolfsoftwaresystemsltd/wolfvoice">wolfvoice</a> by Wolf Software Systems Ltd, which donated its protocol handling, spatial mixer and session logic. Licensed under Apache 2.0.</p>
     </div>
   </section>
-</main>
-
-<footer class="site">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Confluence</a>
-        <p>A self-hosted virtual world platform: server, viewer and voice.</p>
-      </div>
-      <div>
-        <h4>Projects</h4>
-        <ul>
-          <li><a href="opensim.html">Confluence-OpenSim</a></li>
-          <li><a href="viewer.html">Confluence Viewer</a></li>
-          <li><a href="voice.html">Confluence-Voice</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Source</h4>
-        <ul>
-          <li><a href="https://github.com/Ramius1701/Confluence-OpenSim">OpenSim on GitHub</a></li>
-          <li><a href="https://github.com/Ramius1701/Confluence-Viewer">Viewer on GitHub</a></li>
-          <li><a href="https://github.com/Ramius1701/Confluence-Voice">Voice on GitHub</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="fine">Confluence is not made or supported by Linden Lab, the OpenSimulator project or the Aurora Viewer team. Second Life is a trademark of Linden Research, Inc.</p>
-  </div>
-</footer>
-
-</body>
-</html>

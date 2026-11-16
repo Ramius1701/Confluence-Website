@@ -1,0 +1,77 @@
+{
+  "nav": [
+    { "key": "home",        "label": "Home",        "href": "index.html" },
+    { "key": "get-started", "label": "Get started", "href": "get-started.html" },
+    { "key": "opensim",     "label": "OpenSim",     "href": "opensim.html" },
+    { "key": "viewer",      "label": "Viewer",      "href": "viewer.html" },
+    { "key": "voice",       "label": "Voice",       "href": "voice.html" },
+    { "key": "docs",        "label": "Docs",        "href": "docs/index.html" },
+    { "key": "github",      "label": "GitHub",      "href": "https://github.com/Ramius1701" }
+  ],
+
+  "projects": [
+    {
+      "key": "opensim",
+      "name": "Confluence-OpenSim",
+      "repo": "../Confluence-OpenSim",
+      "ref": "confluence/merge-experiment",
+      "branch": "merge-experiment",
+      "github": "https://github.com/Ramius1701/Confluence-OpenSim",
+      "note": "",
+      "docs": [
+        { "group": "Getting going",   "path": "SETUP.md",           "slug": "setup",           "title": "Setting up Confluence",          "summary": "From a clean checkout to a running world: SQLite, MySQL or PostgreSQL, standalone or grid." },
+        { "group": "Getting going",   "path": "BUILDING.md",        "slug": "building",        "title": "Building from source",           "summary": "Requirements and build steps on Windows, Linux and macOS." },
+        { "group": "Getting going",   "path": "HARDENING.md",       "slug": "hardening",       "title": "Security hardening",             "summary": "Locking down the grid's control plane before it faces the internet." },
+        { "group": "Features",        "path": "FEATURES.md",        "slug": "features",        "title": "Features",                       "summary": "Everything Confluence-OpenSim has, by area." },
+        { "group": "Features",        "path": "MARKETPLACE.md",     "slug": "marketplace",     "title": "Marketplace",                    "summary": "Setting up and using the native, viewer-integrated DirectDelivery Marketplace." },
+        { "group": "Features",        "path": "ExperienceSetup.md", "slug": "experiences",     "title": "Experiences",                    "summary": "The settings that turn Experiences on, and the console commands that manage them." },
+        { "group": "Features",        "path": "INWORLD_COMMANDS.md","slug": "inworld-commands","title": "In-world chat commands",         "summary": "Every module an avatar can control by typing in chat." },
+        { "group": "Scripting and physics", "path": "doc/PhloxSetup.md",        "slug": "phlox-setup",   "title": "Setting up Phlox",            "summary": "The optional script engine for LSL, OSSL and SLua, with saved running state." },
+        { "group": "Scripting and physics", "path": "doc/PhloxKnownDefects.md", "slug": "phlox-differences", "title": "Phlox: differences and known gaps", "summary": "Where Phlox differs from Second Life, what it adds, and what's still missing." },
+        { "group": "Scripting and physics", "path": "doc/script-engine-compatibility-audit.md", "slug": "lsl-compatibility", "title": "LSL compatibility audit", "summary": "The script engines checked function by function against Second Life's LSL." },
+        { "group": "Scripting and physics", "path": "doc/JoltPhysics.md",       "slug": "jolt-physics",  "title": "Jolt physics",                "summary": "The Jolt physics engine module: how it works and how to configure it." },
+        { "group": "Project",         "path": "ROADMAP.md",         "slug": "roadmap",         "title": "Roadmap",                        "summary": "What's planned, what's out of scope, and the known gaps today." },
+        { "group": "Project",         "path": "TESTING.md",         "slug": "testing",         "title": "In-world testing checklist",     "summary": "What is built but not yet confirmed with a real viewer in a real region." }
+      ]
+    },
+    {
+      "key": "viewer",
+      "name": "Confluence Viewer",
+      "repo": "../Confluence-Viewer",
+      "ref": "origin/main",
+      "branch": "main",
+      "github": "https://github.com/Ramius1701/Confluence-Viewer",
+      "note": "Confluence Viewer is a modified Aurora Viewer, and these guides come from Aurora's documentation, so they say Aurora where the viewer's own name appears.",
+      "docs": [
+        { "group": "Installing",      "path": "docs/LINUX.md",      "slug": "linux",           "title": "Linux",                          "summary": "Installing and running the viewer on Linux." },
+        { "group": "Installing",      "path": "docs/MACOS.md",      "slug": "macos",           "title": "macOS (experimental)",           "summary": "Installing and running the viewer on macOS." },
+        { "group": "Installing",      "path": "docs/UPDATES.md",    "slug": "updates",         "title": "Updates on Windows",             "summary": "How the viewer checks for and installs new versions." },
+        { "group": "Creating",        "path": "docs/IK_EDIT.md",    "slug": "ik-edit",         "title": "IK Edit and bone contacts",      "summary": "Posing your avatar's bones directly, with contacts that hold hands and feet in place." },
+        { "group": "Creating",        "path": "docs/ANIMATION_CREATION.md", "slug": "animations", "title": "Creating animations",           "summary": "Making native animations inside the viewer." },
+        { "group": "Creating",        "path": "docs/POSER.md",      "slug": "poser",           "title": "Photo poser",                    "summary": "Posing your avatar locally for photos." },
+        { "group": "Creating",        "path": "docs/BLENDER_LIVE.md", "slug": "livemesh",      "title": "LiveMesh with Blender",          "summary": "Editing mesh in Blender and seeing it on your avatar or in-world as you work." },
+        { "group": "More",            "path": "docs/RLVA.md",       "slug": "rlva",            "title": "RLVa",                           "summary": "Which RLVa command families are implemented." },
+        { "group": "More",            "path": "docs/VR.md",         "slug": "vr",              "title": "VR scene viewing (experimental)","summary": "Looking around the world in a VR headset." },
+        { "group": "More",            "path": "docs/VR_WINDOWS.md", "slug": "vr-windows",      "title": "VR on Windows",                  "summary": "Setting up VR viewing on Windows." },
+        { "group": "More",            "path": "docs/DEV_TOOLBOX.md","slug": "dev-toolbox",     "title": "Dev Toolbox",                    "summary": "The viewer's debug tools, gathered in one window." },
+        { "group": "More",            "path": "docs/TRANSLATING.md","slug": "translating",     "title": "Translating",                    "summary": "Adding or improving a language for the viewer's interface." }
+      ]
+    },
+    {
+      "key": "voice",
+      "name": "Confluence-Voice",
+      "repo": "../Confluence-Voice",
+      "ref": "origin/master",
+      "branch": "master",
+      "github": "https://github.com/Ramius1701/Confluence-Voice",
+      "note": "",
+      "docs": [
+        { "group": "Running it",      "path": "README.md",          "slug": "guide",           "title": "Install and run",                "summary": "What you need, the quick start, building, and the known limitations." },
+        { "group": "Running it",      "path": "docs/OPENSIM.md",    "slug": "opensim",         "title": "Configuring OpenSimulator",      "summary": "The three things a region needs before viewers will use WebRTC voice." },
+        { "group": "Running it",      "path": "docs/CLIENT.md",     "slug": "clients",         "title": "Viewers and clients",            "summary": "Firestorm, other viewers, and browser clients." },
+        { "group": "Running it",      "path": "docs/TESTING.md",    "slug": "testing",         "title": "Testing and troubleshooting",    "summary": "What has been verified, and how to find out why voice is silent." },
+        { "group": "Reference",       "path": "docs/PROTOCOL.md",   "slug": "protocol",        "title": "The wire protocol",              "summary": "Every message between viewer, region and voice service, from the code that sends it." }
+      ]
+    }
+  ]
+}

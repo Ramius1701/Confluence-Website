@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Confluence">
+<link rel="icon" href="{{root}}assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{{root}}style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="{{root}}index.html"><img src="{{root}}assets/logo.svg" alt="">Confluence</a>
+    <nav class="main" aria-label="Main">
+{{nav}}
+    </nav>
+  </div>
+</header>
+
+<main>
+{{content}}
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="{{root}}index.html"><img src="{{root}}assets/logo.svg" alt="">Confluence</a>
+        <p>A self-hosted virtual world platform: server, viewer and voice.</p>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="{{root}}opensim.html">Confluence-OpenSim</a></li>
+          <li><a href="{{root}}viewer.html">Confluence Viewer</a></li>
+          <li><a href="{{root}}voice.html">Confluence-Voice</a></li>
+          <li><a href="{{root}}get-started.html">Get started</a></li>
+          <li><a href="{{root}}docs/index.html">Documentation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Source</h4>
+        <ul>
+          <li><a href="https://github.com/Ramius1701/Confluence-OpenSim">OpenSim on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Viewer">Viewer on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Voice">Voice on GitHub</a></li>
+          <li><a href="https://github.com/Ramius1701/Confluence-Website">This website on GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Confluence is not made or supported by Linden Lab, the OpenSimulator project or the Aurora Viewer team. Second Life is a trademark of Linden Research, Inc. Built {{built}}.</p>
+  </div>
+</footer>
+
+</body>
+</html>

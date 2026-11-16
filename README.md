@@ -1,40 +1,58 @@
 # Confluence-Website
 
-The website for the Confluence projects:
+The website for the Confluence project, live at **https://confluence.ddns.net**:
 
 - [Confluence-OpenSim](https://github.com/Ramius1701/Confluence-OpenSim): the OpenSimulator fork (server, Robust, web portal)
 - [Confluence-Viewer](https://github.com/Ramius1701/Confluence-Viewer): the Rust viewer, a modified Aurora Viewer
 - [Confluence-Voice](https://github.com/Ramius1701/Confluence-Voice): Windows-native spatial WebRTC voice
 
-Plain static HTML and CSS, no build step. Open `index.html` in a browser to view it locally.
+A small Python build turns the hand-written pages and the projects' own Markdown guides into a static site.
 
-## Pages
+## Building
 
-| File | Page |
+Needs Python 3 and the pinned Markdown library, plus the three project repos checked out beside this one
+(`..\Confluence-OpenSim`, `..\Confluence-Viewer`, `..\Confluence-Voice`).
+
+```powershell
+python -m pip install --user -r requirements.txt
+python build.py            # build into dist\
+python build.py --fetch    # git fetch the project repos first
+```
+
+Open `dist\index.html` to look at the result. `dist\` is never committed.
+
+## Layout
+
+| Path | What it is |
 |---|---|
-| `index.html` | Overview of the platform and the three projects |
-| `opensim.html` | Confluence-OpenSim |
-| `viewer.html` | Confluence Viewer |
-| `voice.html` | Confluence-Voice |
-| `style.css` | Shared styles |
-| `assets/` | Logo and viewer screenshots (from the Confluence-Viewer repo) |
+| `src/layout.html` | The page frame: head, header, nav, footer. `{{root}}` is the path back to the site root. |
+| `src/pages/*.html` | Page bodies (home, get started, OpenSim, Viewer, Voice), each with a short header comment: title, description, nav. |
+| `src/static/` | Copied as it is: `style.css`, `assets/`. |
+| `site.json` | The nav, and the guides published from each project repo. |
+| `build.py` | The build. |
+| `Deploy.ps1` | Builds and publishes to Laragon. |
 
-The header and footer are repeated in each page; change all four when editing them.
+## Docs from the project repos
+
+`site.json` lists, per project, which Markdown files become pages under `docs/`, with their title, group and summary.
+They are read with git from the pushed branch (`ref`, such as `origin/main`), never from the working tree, so
+unpushed edits never reach the site. Links between listed guides stay on the site, images are copied in, and every
+other repo link goes to GitHub. To publish another guide, add it to `site.json`.
+
+Project logs, agent instructions and internal assessments are left out on purpose.
 
 ## Hosting
 
-Live at **https://confluence.ddns.net**, served by Laragon's Apache on the grid machine.
+Served by Laragon's Apache on the grid machine.
 
-- Publish changes with `.\Deploy.ps1`, which mirrors the site's files into `S:\laragon\www\confluence`. Editing the
-  repo alone changes nothing live.
+- Publish with `.\Deploy.ps1`: it fetches the project repos, builds, and mirrors `dist\` into
+  `S:\laragon\www\confluence`. `-NoFetch` skips the fetch. Editing the repo alone changes nothing live.
 - Apache site: `S:\laragon\etc\apache2\sites-enabled\zzz-public-confluence.conf` (HTTP sends to HTTPS, except
   `/.well-known` for certificate renewal).
 - Certificate: Let's Encrypt via win-acme, renewal named `confluence`, renewed by the daily "win-acme renew" task and
   put in place by `S:\win-acme\Scripts\Deploy-ApacheCerts.ps1 -Name confluence` (into `S:\laragon\etc\ssl\confluence`).
 
-It's also ready for GitHub Pages or any static host (`.nojekyll` is included).
-
 ## Keeping it accurate
 
-Status figures (test counts, versions, what is live-verified) come from each project's README, `FEATURES.md` and
-testing docs. Update them here when those change.
+The guides update themselves on each deploy. The hand-written pages' figures (test counts, versions, what is
+live-verified) come from each project's README, `FEATURES.md` and testing docs; update them when those change.
