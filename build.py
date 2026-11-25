@@ -1,7 +1,8 @@
 """Builds the Confluence website into dist/.
 
     python build.py            build from what the project repos already have
-    python build.py --fetch    git fetch each project repo first, so the docs match what is pushed
+    python build.py --fetch    git fetch each project repo first, so the docs match what is pushed,
+                               and read the latest releases from GitHub
 
 Pages:  src/pages/*.html are page bodies with a small header comment (title, description, nav),
         wrapped in src/layout.html. "{{root}}" in a page is the path back to the site root.
@@ -75,6 +76,115 @@ def render(layout, site, *, title, description, nav, root, content, built):
                        ("built", built)):
         out = out.replace("{{" + key + "}}", value)
     return out.replace("{{root}}", root)
+
+
+# ---------------------------------------------------------------- releases
+
+CACHE = ROOT / ".cache" / "releases.json"
+
+
+def fetch_releases(site):
+    """Each project's published GitHub releases, from the public API (no sign-in needed)."""
+    import urllib.request
+    out = {}
+    for p in site["projects"]:
+        slug = (p.get("releases") or {}).get("slug")
+        if not slug:
+            continue
+        req = urllib.request.Request(f"https://api.github.com/repos/{slug}/releases?per_page=30",
+                                     headers={"Accept": "application/vnd.github+json",
+                                              "User-Agent": "confluence-website-build"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = json.load(r)
+        out[slug] = [{"tag": d["tag_name"], "prerelease": d["prerelease"], "published": d.get("published_at") or "",
+                      "url": d["html_url"],
+                      "assets": [{"name": a["name"], "size": a["size"], "url": a["browser_download_url"]}
+                                 for a in d.get("assets", [])]}
+                     for d in data if not d.get("draft")]
+    return out
+
+
+def load_releases(site, fetch):
+    """Fresh from GitHub with --fetch (or when nothing is cached yet), otherwise the cached copy.
+    A failed fetch falls back to the cache; with no cache the page still builds, linking to GitHub."""
+    cached = json.loads(CACHE.read_text(encoding="utf-8")) if CACHE.exists() else None
+    if fetch or cached is None:
+        try:
+            fresh = fetch_releases(site)
+            CACHE.parent.mkdir(exist_ok=True)
+            CACHE.write_text(json.dumps(fresh, indent=1), encoding="utf-8")
+            print(f"releases: {sum(len(v) for v in fresh.values())} read from GitHub")
+            return fresh
+        except Exception as e:  # network, rate limit: never fail the build over it
+            print(f"releases: GitHub not reached ({e}); using {'the cached copy' if cached else 'links only'}")
+    return cached or {}
+
+
+def human_size(n):
+    for unit in ("bytes", "KB", "MB"):
+        if n < 1024:
+            return f"{n} bytes" if unit == "bytes" else f"{n:.1f} {unit}"
+        n /= 1024
+    return f"{n:.1f} GB"
+
+
+def nice_date(iso):
+    try:
+        d = datetime.date.fromisoformat(iso[:10])
+    except ValueError:
+        return ""
+    return f"{d.day} {d:%B %Y}"
+
+
+def release_block(rel, files):
+    esc = html.escape
+    by_name = {a["name"]: a for a in rel["assets"]}
+    rows = []
+    for f in files:
+        a = next((a for a in rel["assets"] if a["name"].endswith(f["ends"])), None)
+        if not a:
+            continue
+        sha = by_name.get(a["name"] + ".sha256")
+        sha_link = f' &middot; <a href="{esc(sha["url"])}">SHA-256</a>' if sha else ""
+        rows.append(f'<li><a class="dl" href="{esc(a["url"])}"><strong>{esc(f["label"])}</strong>'
+                    f'<span>{esc(a["name"])}</span></a><span class="dl-meta">{human_size(a["size"])}{sha_link}</span></li>')
+    if not rel["prerelease"]:
+        pill = '<span class="pill ok">Latest</span>'
+    elif "beta" in rel["tag"].lower():
+        pill = '<span class="pill wip">Beta</span>'
+    else:
+        pill = '<span class="pill info">Pre-release</span>'
+    files_html = f'<ul class="dl-list">{"".join(rows)}</ul>' if rows else \
+        f'<p class="muted">Files are on the <a href="{esc(rel["url"])}">release page</a>.</p>'
+    return (f'<div class="release"><div class="release-head"><h3>{esc(rel["tag"])}</h3>{pill}'
+            f'<span class="muted">{nice_date(rel["published"])}</span>'
+            f'<a class="notes" href="{esc(rel["url"])}">Release notes</a></div>{files_html}</div>')
+
+
+def project_downloads(project, releases):
+    """The latest release, plus a newer pre-release or beta when there is one."""
+    cfg = project.get("releases") or {}
+    all_url = f'{project["github"]}/releases'
+    if cfg.get("slug") not in releases:
+        return f'<p class="muted">Releases are listed <a href="{all_url}">on GitHub</a>.</p>'
+    rels = sorted((r for r in releases[cfg["slug"]] if re.match(r"v\d", r["tag"])),
+                  key=lambda r: r["published"], reverse=True)
+    if not rels:
+        return '<p class="muted">No packaged release yet.</p>'
+    stable = next((r for r in rels if not r["prerelease"]), None)
+    shown = [stable] if stable else []
+    if rels[0] is not stable:
+        shown.append(rels[0])
+    blocks = "".join(release_block(r, cfg.get("files", [])) for r in shown)
+    return f'{blocks}<p class="all-releases"><a href="{all_url}">All releases &rarr;</a></p>'
+
+
+def fill_downloads(body, site, releases):
+    for p in site["projects"]:
+        tag = "{{downloads:" + p["key"] + "}}"
+        if tag in body:
+            body = body.replace(tag, project_downloads(p, releases))
+    return body
 
 
 # ---------------------------------------------------------------- markdown
@@ -330,9 +440,12 @@ def main():
         shutil.rmtree(DIST)
     shutil.copytree(SRC / "static", DIST)
 
+    releases = load_releases(site, args.fetch)
+
     print("pages:")
     for path in sorted((SRC / "pages").glob("*.html")):
         meta, body = read_page(path)
+        body = fill_downloads(body, site, releases)
         page = render(layout, site, title=meta.get("title", path.stem), description=meta.get("description", ""),
                       nav=meta.get("nav", ""), root="", content=body, built=built)
         (DIST / path.name).write_text(page, encoding="utf-8")

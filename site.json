@@ -5,6 +5,7 @@
     { "key": "opensim",     "label": "OpenSim",     "href": "opensim.html" },
     { "key": "viewer",      "label": "Viewer",      "href": "viewer.html" },
     { "key": "voice",       "label": "Voice",       "href": "voice.html" },
+    { "key": "downloads",   "label": "Downloads",   "href": "downloads.html" },
     { "key": "docs",        "label": "Docs",        "href": "docs/index.html" },
     { "key": "github",      "label": "GitHub",      "href": "https://github.com/Ramius1701" }
   ],
@@ -18,6 +19,7 @@
       "branch": "merge-experiment",
       "github": "https://github.com/Ramius1701/Confluence-OpenSim",
       "note": "",
+      "releases": { "slug": "Ramius1701/Confluence-OpenSim", "files": [] },
       "docs": [
         { "group": "Getting going",   "path": "SETUP.md",           "slug": "setup",           "title": "Setting up Confluence",          "summary": "From a clean checkout to a running world: SQLite, MySQL or PostgreSQL, standalone or grid." },
         { "group": "Getting going",   "path": "BUILDING.md",        "slug": "building",        "title": "Building from source",           "summary": "Requirements and build steps on Windows, Linux and macOS." },
@@ -41,6 +43,11 @@
       "ref": "origin/main",
       "branch": "main",
       "github": "https://github.com/Ramius1701/Confluence-Viewer",
+      "releases": { "slug": "Ramius1701/Confluence-Viewer", "files": [
+        { "label": "Windows 10/11, 64-bit", "ends": "-windows-x64.zip" },
+        { "label": "Linux, 64-bit",          "ends": "-linux-x64.tar.gz" },
+        { "label": "macOS, Apple silicon (experimental)", "ends": "-macos-arm64.dmg" }
+      ] },
       "note": "Confluence Viewer is a modified Aurora Viewer, and these guides come from Aurora's documentation, so they say Aurora where the viewer's own name appears.",
       "docs": [
         { "group": "Installing",      "path": "docs/LINUX.md",      "slug": "linux",           "title": "Linux",                          "summary": "Installing and running the viewer on Linux." },
@@ -64,6 +71,9 @@
       "ref": "origin/master",
       "branch": "master",
       "github": "https://github.com/Ramius1701/Confluence-Voice",
+      "releases": { "slug": "Ramius1701/Confluence-Voice", "files": [
+        { "label": "Windows, 64-bit", "ends": "-windows-x64.zip" }
+      ] },
       "note": "",
       "docs": [
         { "group": "Running it",      "path": "README.md",          "slug": "guide",           "title": "Install and run",                "summary": "What you need, the quick start, building, and the known limitations." },

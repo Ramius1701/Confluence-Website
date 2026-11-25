@@ -1,0 +1,59 @@
+<!--
+title: Downloads · Confluence
+description: Download Confluence Viewer for Windows, Linux and macOS, and Confluence-Voice for Windows. Confluence-OpenSim is built from source.
+nav: downloads
+-->
+  <section class="hero hero-small">
+    <div class="wrap">
+      <span class="eyebrow">Downloads</span>
+      <h1>Get <span class="grad">Confluence</span></h1>
+      <p class="lead">The newest releases of each project, read from GitHub each time the site is built. Every file links straight to its GitHub release, with a SHA-256 checksum beside it where one is published.</p>
+    </div>
+  </section>
+
+  <section id="viewer" style="padding-top:0">
+    <div class="wrap">
+      <div class="dl-project accent-teal">
+        <div class="dl-intro">
+          <span class="tag">Client</span>
+          <h2>Confluence Viewer</h2>
+          <p>Unzip and run; on Windows the viewer then checks for new versions itself and installs only updates signed by the project's release workflow. Betas carry the newest work ahead of the next release.</p>
+          <p><a href="docs/viewer/linux.html">Linux guide</a> &middot; <a href="docs/viewer/macos.html">macOS guide</a> &middot; <a href="docs/viewer/updates.html">How updates work</a></p>
+        </div>
+        <div class="dl-releases">{{downloads:viewer}}</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="voice" class="alt">
+    <div class="wrap">
+      <div class="dl-project accent-indigo">
+        <div class="dl-intro">
+          <span class="tag">Voice</span>
+          <h2>Confluence-Voice</h2>
+          <p>One <code>confluence-voice.exe</code> in a zip. Run it once to write its <code>.toml</code> file, set your public IP and certificate, then run it again.</p>
+          <p><a href="voice.html#quick-start">Quick start</a> &middot; <a href="docs/voice/guide.html">Full guide</a> &middot; <a href="docs/voice/opensim.html">Setting up your regions</a></p>
+        </div>
+        <div class="dl-releases">{{downloads:voice}}</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="opensim">
+    <div class="wrap">
+      <div class="dl-project accent-purple">
+        <div class="dl-intro">
+          <span class="tag">Server</span>
+          <h2>Confluence-OpenSim</h2>
+          <p>The server is built from source for now: clone the repository, build it, and set it up as a standalone world or a full grid.</p>
+          <p><a href="docs/opensim/building.html">Building from source</a> &middot; <a href="docs/opensim/setup.html">Setting up</a> &middot; <a href="https://github.com/Ramius1701/Confluence-OpenSim">Source on GitHub</a></p>
+        </div>
+        <div class="dl-releases">
+          {{downloads:opensim}}
+          <pre><code>git clone https://github.com/Ramius1701/Confluence-OpenSim
+cd Confluence-OpenSim
+git checkout merge-experiment</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>

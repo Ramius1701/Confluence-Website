@@ -41,6 +41,17 @@ other repo link goes to GitHub. To publish another guide, add it to `site.json`.
 
 Project logs, agent instructions and internal assessments are left out on purpose.
 
+## Downloads
+
+`src/pages/downloads.html` holds a `{{downloads:<project key>}}` tag per project. The build fills it with that
+project's latest release, plus a newer beta or pre-release when there is one, read from the GitHub releases API
+(public, no sign-in). Only tags starting `v<digit>` count, so packs such as `ffmpeg-1` stay off. Which files are
+listed, and their labels, come from each project's `releases.files` in `site.json` (matched by filename ending); a
+`.sha256` file beside one is linked as its checksum.
+
+`--fetch` reads the releases afresh and keeps a copy in `.cache/releases.json`; a plain build uses that copy. If
+GitHub can't be reached, the cached copy is used, and with none the page links to the releases on GitHub instead.
+
 ## Hosting
 
 Served by Laragon's Apache on the grid machine.
