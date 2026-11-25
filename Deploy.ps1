@@ -12,9 +12,22 @@ param(
 $ErrorActionPreference = 'Stop'
 $src = $PSScriptRoot
 
+# The build runs in its own Python environment, .venv\ beside this script (made on first run), so it never depends
+# on packages installed per user, which a scheduled task may not see.
+$py = Join-Path $src '.venv\Scripts\python.exe'
+if (-not (Test-Path $py)) {
+    python -m venv (Join-Path $src '.venv')
+    if ($LASTEXITCODE -ne 0) { throw "could not create $src\.venv" }
+}
+& $py -c "import importlib.util, sys; sys.exit(importlib.util.find_spec('markdown') is None)"
+if ($LASTEXITCODE -ne 0) {
+    & $py -m pip install --quiet --disable-pip-version-check -r (Join-Path $src 'requirements.txt')
+    if ($LASTEXITCODE -ne 0) { throw "could not install the build's requirements" }
+}
+
 $buildArgs = @("$src\build.py")
 if (-not $NoFetch) { $buildArgs += '--fetch' }
-python @buildArgs
+& $py @buildArgs
 if ($LASTEXITCODE -ne 0) { throw "build failed (exit $LASTEXITCODE); nothing was published" }
 
 New-Item -ItemType Directory -Force $Target | Out-Null

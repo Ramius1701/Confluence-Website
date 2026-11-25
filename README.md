@@ -58,6 +58,10 @@ Served by Laragon's Apache on the grid machine.
 
 - Publish with `.\Deploy.ps1`: it fetches the project repos, builds, and mirrors `dist\` into
   `S:\laragon\www\confluence`. `-NoFetch` skips the fetch. Editing the repo alone changes nothing live.
+  The build runs in `.venv\` (made by the first deploy from `requirements.txt`), not per-user packages.
+- The scheduled task "Confluence website deploy" (the owner's account, daily at 06:00, or at the next logon if
+  missed) runs `Deploy.ps1`, so what the projects push and release reaches the site within a day. Its output is in
+  `.cache\deploy.log`. Hand-written pages (`src/pages`) still change only when edited and pushed here.
 - Apache site: `S:\laragon\etc\apache2\sites-enabled\zzz-public-confluence.conf` (HTTP sends to HTTPS, except
   `/.well-known` for certificate renewal).
 - Certificate: Let's Encrypt via win-acme, renewal named `confluence`, renewed by the daily "win-acme renew" task and
