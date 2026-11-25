@@ -69,8 +69,8 @@ nav: opensim
           <thead><tr><th>Area</th><th>Status</th><th>Detail</th></tr></thead>
           <tbody>
             <tr><td>Windows build</td><td><span class="pill ok">Clean</span></td><td>Full solution, 0 warnings, 0 errors, including Jolt and Phlox</td></tr>
-            <tr><td>Jolt physics tests</td><td><span class="pill ok">Passing</span></td><td>2,099 passed, 0 failed</td></tr>
-            <tr><td>Phlox and core tests</td><td><span class="pill ok">Passing</span></td><td>5,561 tests, with 2 skipped and 1 timing-sensitive test that passes on its own</td></tr>
+            <tr><td>Jolt physics tests</td><td><span class="pill ok">Passing</span></td><td>5,639 passed across the eight Jolt test projects, 5 skipped</td></tr>
+            <tr><td>Phlox and core tests</td><td><span class="pill ok">Passing</span></td><td>6,912 passed, 2 skipped; one timing-sensitive test can fail on a busy machine and passes on its own</td></tr>
             <tr><td>Web &amp; Admin UI</td><td><span class="pill ok">Live-verified</span></td><td>Against a running Robust: real sessions, admin actions, database writes</td></tr>
             <tr><td>In-world</td><td><span class="pill ok">Live-verified</span></td><td>With Firestorm: login, region crossing, weather, a full land purchase, and spatial voice between two people in different countries</td></tr>
             <tr><td>Individual LSL/OSSL functions</td><td><span class="pill wip">Partial</span></td><td>Region stability doesn't mean every function has been exercised in-world</td></tr>
@@ -85,7 +85,7 @@ nav: opensim
       <div class="split">
         <div>
           <h2>Standing on many shoulders</h2>
-          <p class="section-intro" style="margin-bottom:16px">Official OpenSimulator is the baseline, and its work keeps being merged in. Confluence began from OpenSim Continuum and has ported, by hand where it had to, the best of the wider ecosystem. Each port was checked against a real build first.</p>
+          <p class="section-intro" style="margin-bottom:16px">Official OpenSimulator is the baseline, and its work keeps being merged in. Tranquillity's open pull requests are ported as they appear, in batches, each with its own tests. Confluence began from OpenSim Continuum and has ported, by hand where it had to, the best of the wider ecosystem. Each port was checked against a real build first.</p>
           <p class="section-intro">Grid owners can run it standalone or as a Robust grid, on Windows or elsewhere, and turn on only what they want through their own <code>.ini</code> files.</p>
         </div>
         <div class="card">
