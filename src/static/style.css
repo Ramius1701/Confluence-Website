@@ -58,6 +58,7 @@ nav.main a[aria-current="page"] { color: var(--text); background: var(--card); }
 }
 .hero > * { position: relative; }
 .hero .logo { width: 128px; margin: 0 auto 24px; }
+.card-logo { display: block; width: 56px; height: 56px; margin-bottom: 14px; }
 .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.1; margin: 0 0 16px; letter-spacing: -.02em; }
 .hero p.lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--muted); max-width: 720px; margin: 0 auto 32px; }
 .grad { background: linear-gradient(90deg, var(--purple-2), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
