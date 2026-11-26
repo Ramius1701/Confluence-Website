@@ -1,5 +1,12 @@
 # Confluence-Website
 
+<p align="center">
+  <a href="https://confluence.ddns.net"><img alt="Website: confluence.ddns.net" src="https://img.shields.io/badge/website-confluence.ddns.net-FBBF24?style=flat-square&labelColor=0D1330"></a>
+  <a href="#building"><img alt="Built with Python and Markdown" src="https://img.shields.io/badge/built%20with-Python%20%7C%20Markdown-8B5CF6?style=flat-square&labelColor=0D1330"></a>
+  <a href="#hosting"><img alt="Rebuilt daily" src="https://img.shields.io/badge/rebuilt-daily-5EEAD4?style=flat-square&labelColor=0D1330"></a>
+  <a href="https://github.com/Ramius1701/Confluence-Website/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/Ramius1701/Confluence-Website/main?style=flat-square&labelColor=0D1330&color=4F46E5"></a>
+</p>
+
 The website for the Confluence project, live at **https://confluence.ddns.net**:
 
 - [Confluence-OpenSim](https://github.com/Ramius1701/Confluence-OpenSim): the OpenSimulator fork (server, Robust, web portal)
