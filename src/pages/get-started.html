@@ -91,6 +91,8 @@ dotnet build OpenSim.sln --configuration Release</code></pre>
         <li>
           <h3>Add your grid</h3>
           <p>Open the grid manager and add your grid with the login address it gives its residents. Hypergrid links and teleports to other grids work too.</p>
+          <p>Most grids give a plain address such as <code>http://grid.example.org:8002/</code>, which sends your login unencrypted. If the grid also offers an encrypted <code>https://</code> address (it may show it on its Get a Viewer page), use that one, exactly as given. Never mix the two: <code>https://</code> with the plain port, as in <code>https://grid.example.org:8002/</code>, can't work and fails with a network error.</p>
+          <p><a href="{{root}}docs/opensim/hardening.html#encrypted-https-logins">Why encrypted logins matter</a></p>
         </li>
         <li>
           <h3>Log in</h3>
